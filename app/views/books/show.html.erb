@@ -33,9 +33,16 @@
           ♡<%= @book.favorites.count %> いいね
           <% end %>
           </td>
+          <td>
+          コメント数:<%= book.book_comments.count %> 
+        </td>
         <% end %>
         </tr>
       </table>
+       <div class="comments">
+         
+       </div>
+      
     </div>
   </div>
 </div>
