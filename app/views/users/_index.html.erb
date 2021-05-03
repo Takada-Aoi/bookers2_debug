@@ -12,6 +12,16 @@
         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
         <td><%= user.name %></td>
         <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
+        <td>
+          <%= form_for(current_user.active_relationships.build) do |f| %>
+          <%= hidden_field_tag :followed_id, user.id %>
+          <%= f.submit "フォローする", class: "btn btn-primary" %>
+          <% end %>
+
+         <%= form_for(current_user.active_relationships.find_by(followed_id: user.id),html: { method: :delete }) do |f| %>
+         <%= f.submit "フォローを外す", class: "btn" %>
+         <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
