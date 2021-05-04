@@ -11,7 +11,6 @@
       <tr>
         <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
         <td><%= user.name %></td>
-        <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
         <% if current_user != user %>
         <% if user.followed_by?(current_user) %>
         <td>
@@ -28,7 +27,8 @@
         </td>
         <td>
           フォロー数：<%= user.followed.count %>
-        </td
+        </td>
+        <td><%= link_to 'Show', user_path(user), class: "user_#{user.id}" %></td>
       </tr>
     <% end %>
   </tbody>

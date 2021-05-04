@@ -10,11 +10,17 @@
   </tr>
   <tr>
     <th>follower</th>
-    <th><%= user.followers.count %></th>
+    <th><%= link_to followers_user_path(user.id) do %>
+    <%= user.followers.count %>
+    <% end %>
+    </th>
   </tr>
   <tr>
     <th>follow</th>
-    <th><%= user.followed.count %></th>
+    <th><%= link_to follows_user_path(user.id) do %>
+      <%= user.followed.count %>
+      <% end %>
+    </th>
   </tr>
   <% if current_user != user %>
         <% if user.followed_by?(current_user) %>
